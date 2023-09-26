@@ -49,12 +49,13 @@ Vytvořte libovolně pojmenovanou vlastní funkci s minimálně jedním parametr
 aspoň jednu podmínku if a funkci print(). Dodržte správné odsazování kódu a opatřete funkci stručnou dokumentací.
 Do konzole vypište nejprve docstring vaší funkce a potom zavolejte funkci samotnou.   
 """
+def pocet(x):
+    for i in range(x):
+        if i % 10 == 0:
+            print(i)
 
-for i in range(1,100):
-    if i % 10 == 0:
-        print(i)
+pocet(1000)
 
-
-    """ Výsledkem této funkce bude vypsání čísel od 10 do 90,
-        protože tyto čísla jsou násobky 10, které splňují podmínku i % 10 == 0.
-        Ostatní čísla od 1 do 9 a od 91 do 99 tuto podmínku nesplňují, takže nebudou vypsány."""
+""" Výsledkem této funkce bude vypsání čísel od 10 do 90,
+    protože tyto čísla jsou násobky 10, které splňují podmínku i % 10 == 0.
+    Ostatní čísla od 1 do 9 a od 91 do 99 tuto podmínku nesplňují, takže nebudou vypsány."""
