@@ -30,9 +30,32 @@ Některé objekty mohou mít explicitně přiřazené jméno, obecně označovan
 '''Úkol A'''
 #? Najděte na Internetu, jakými funkcemi lze v Pythonu zjistit
 #? a) typ objektu
+cislo = 42
+typ_cisla = type(cislo)
+print(typ_cisla)
 #? b) identitu objektu (jeho adresu v paměti)
+text = "Hello, world!"
+identita_textu = id(text)
+print(identita_textu)
 #? Ukažte to na příkladech proměnných students_count, rating, is_published a vypište výstupy do konzole
 
+typ_students_count = type(students_count)
+typ_rating = type(rating)
+typ_is_published = type(is_published)
+
+# Zjištění identity objektu
+identita_students_count = id(students_count)
+identita_rating = id(rating)
+identita_is_published = id(is_published)
+
+# Výstup do konzole
+print("Typ proměnné 'students_count':", typ_students_count)
+print("Typ proměnné 'rating':", typ_rating)
+print("Typ proměnné 'is_published':", typ_is_published)
+
+print("Identita proměnné 'students_count':", identita_students_count)
+print("Identita proměnné 'rating':", identita_rating)
+print("Identita proměnné 'is_published':", identita_is_published)
 # Numerické operátory
 # print(10 + 3)
 # print(10 - 3)
@@ -48,10 +71,10 @@ Některé objekty mohou mít explicitně přiřazené jméno, obecně označovan
 '''
 Příklady použití numerických literálů (numeric literals)
 '''
-binary = 0b1010 #Binary Literals
+'''binary = "011101" #Binary Literals
 octal = 0o310 #Octal Literal
 decimal = 100 #Decimal Literal
-hexadecimal = 0x12c #Hexadecimal Literal
+hexadecimal = 0x12c #Hexadecimal Literal'''
 
 # print(binary, octal, decimal, hexadecimal)
 # Převod desítkového čísla na binární, oktalové a hexadecimální
@@ -66,12 +89,44 @@ hexadecimal = 0x12c #Hexadecimal Literal
 
 '''Úkol B'''
 #? Vypište do poznámky všechny bitové operátory, které nabízí Python
+'''Bitový AND (&): Provede bitový součin dvou čísel.
+Bitový OR (|): Provede bitový součet dvou čísel.
+Bitový XOR (^): Provede bitový exkluzivní OR dvou čísel.
+Bitový negace (~): Invertuje všechny bity čísla.
+Bitový posun vlevo (<<): Posune bity v čísle vlevo o určitý počet pozic.
+Bitový posun vpravo (>>): Posune bity v čísle vpravo o určitý počet pozic.'''
 #? Do proměnné myself_binary uložte binární číslo vytvořené na základě osmi prvních znaků z vašeho jména a příjmení (souhláska = 1, samohláska 0)
 #? Příklad - HildaDok: 10110101
 #? Vypište toto binární číslo v desítkové soustavě
 #? Pro toto binární číslo proveďte nejprve bitový posun o 2 bity vpravo, poté vypište výsledek v desítkové soustavě
 #? Proveďte bitový součin hexadecimálního čísla "1A" a vašeho binárního čísla a opět vypište v desítkové soustavě
 #? Výsledek zobrazte jako formátovaný řetězec - např. "Binární součin čísla 0b11010 a 0b10110101 je 0b10000"
+
+# Základní binární řetězec podle pravidla (souhláska = 1, samohláska = 0)
+myself_binary = "10110101"
+
+# Převod binárního řetězce na desítkové číslo
+myself_decimal = int(myself_binary, 2)
+
+# Bitový posun o 2 bity vpravo
+shifted_decimal = myself_decimal >> 2
+
+# Hexadecimální číslo
+hex_value = 0x1A
+
+# Bitový součin
+result_decimal = shifted_decimal & hex_value
+
+# Formátovaný výstup
+result_binary = bin(result_decimal)
+result_message = f"Binární součin čísla {bin(shifted_decimal)} a {bin(hex_value)} je {result_binary}"
+
+# Výstup
+print("Binární číslo:", myself_binary)
+print("Desítkové číslo:", myself_decimal)
+print("Bitový posun o 2 bity vpravo:", shifted_decimal)
+print("Hexadecimální číslo:", hex_value)
+print(result_message)
 
 
 '''Python plně podporuje operace v plovoucí řádové čárce (tj. desetinná čísla). 
