@@ -9,6 +9,7 @@ https://www.youtube.com/watch?v=_uQrJ0TkZlc&list=PLDDhGQzLtPdbS987RIIT8WKwb-L_K2
 https://www.w3schools.com/python/python_lists.asp
 https://macek.sandbox.cz/texty/python-tutorial-cz/tut/node5.html
 '''
+import string
 
 '''
 Příklady různých seznamů v Pythonu:
@@ -56,11 +57,11 @@ print(f'\tVypíše každý druhý prvek ze seznamu letters: {letters[::2]}')
 # ??? 1. cvičení ???
 # Doplňte podle zadání chybějící u následujících tří výpisů
 print('\n1. Cvičení\n***********************************************************************************************')
-print(f'\tVypíše poslední 2 prvky ze seznamu numbers: ???')
-print(f'\tVypíše každý sudý prvek ze seznamu letters: ???')
-print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: ???')
-print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: ???')
-print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: ???')
+print(f'\tVypíše poslední 2 prvky ze seznamu numbers: {numbers[-2:]}')
+print(f'\tVypíše každý sudý prvek ze seznamu letters: {letters[::2]}')
+print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: {mixed_list[:-2]}')
+print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[-1]["name"]}')
+print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: {mixed_list[3][1][-2]}')
 print('***********************************************************************************************\n')
 # ??? Konec 1. cvičení ???
 
@@ -284,7 +285,16 @@ print(f'\tSbalení seznamů do proměnné values: {values}\n')
 # import knihovny pro generování náhodných čísel
 from random import randint
 
+
 print(f'\n*************************************\nCvičení 2\n*************************************')
+hundreds=[x for x in range(1,2001) if x %200 == 0]
+ascii=[chr(randint(65,90)) for _ in range(50)]
+print(f'A:{hundreds}\nB:{ascii}')
+del hundreds[-3:3]
+unique= [char for char in ascii if ascii.count(char) ==1]
+hund_ascii= list(zip(hundreds,ascii))
+
+print(f'C:{hundreds}\nD:{unique}\nE:{hund_ascii}')
 
 
 
@@ -298,3 +308,30 @@ print(f'\n*************************************\nCvičení 2\n******************
 # Záznamy budou seřazeny podle věku (sestupně).
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
+persons.extend([
+    ("Eva", 22, "žena"),
+    ("David", 35, "muž"),
+    ("Fiona", 29, "žena"),
+    ("George", 40, "muž")
+])
+
+# Vyhledání všech žen
+women = [person[0] for person in persons if person[2] == "žena"]
+
+# Vypsání jmen žen s podtržítky
+for woman in women:
+    print(woman)
+    print("-" * len(woman))
+
+# Vyhledání osob obsahujících "i" ve jméně
+ipeople = [person for person in persons if "i" in person[0].lower()]
+
+# Seřazení osob podle věku sestupně
+ipeople.sort(key=lambda x: x[1], reverse=True)
+
+# Převod do struktury csv souboru
+csv_data = "Index;jmeno;Vek;Pohlavi\n"  # Hlavička s oddělovačem středníkem
+for index, person in enumerate(ipeople, start=1):
+    csv_data += f"{index};{person[0]};{person[1]};{person[2]}\n"
+
+print(csv_data)

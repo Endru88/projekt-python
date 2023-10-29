@@ -94,3 +94,38 @@ child3          Linus               2011
 ---------------------------------------------
 Počet záznamů: 3
 '''
+mydictionary = {
+    "cars": [
+        {"make": "Ford", "model": "Mustang", "year": 2020, "colors": ["Red", "Black"]},
+        {"make": "Toyota", "model": "Camry", "year": 2019, "colors": ["Silver", "Blue"]}
+    ],
+    "books": [
+        {"title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "year": 1925},
+        {"title": "To Kill a Mockingbird", "author": "Harper Lee", "year": 1960}
+    ]
+}
+
+# Přidání nového vozu
+new_car = {"make": "Honda", "model": "Civic", "year": 2022, "colors": ["White", "Gray"]}
+mydictionary["cars"].append(new_car)
+
+# Odebrání první knihy
+mydictionary["books"].pop(0)
+
+print("Slovník mydictionary")
+print("-" * 75)
+print("{:<20} {:<30} {:<10}".format("category", "name/author", "year")
+      + "{:<25} {:<20}".format("make/model", "colors"))
+print("-" * 75)
+
+for category, items in mydictionary.items():
+    for item in items:
+        if category == "cars":
+            print("{:<20} {:<30} {:<10}".format(category, item["make"] + " " + item["model"], item["year"])
+                  + "{:<25} {:<20}".format(item["make"], ", ".join(item["colors"]))
+                  )
+        elif category == "books":
+            print("{:<20} {:<30} {:<10}".format(category, item["title"], item["year"])
+                  + "{:<25} {:<20}".format(item["author"], "")
+                  )
+print("-" * 75)
