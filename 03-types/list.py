@@ -315,21 +315,17 @@ persons.extend([
     ("George", 40, "muž")
 ])
 
-# Vyhledání všech žen
+
 women = [person[0] for person in persons if person[2] == "žena"]
 
-# Vypsání jmen žen s podtržítky
 for woman in women:
     print(woman)
     print("-" * len(woman))
 
-# Vyhledání osob obsahujících "i" ve jméně
 ipeople = [person for person in persons if "i" in person[0].lower()]
 
-# Seřazení osob podle věku sestupně
 ipeople.sort(key=lambda x: x[1], reverse=True)
 
-# Převod do struktury csv souboru
 csv_data = "Index;jmeno;Vek;Pohlavi\n"  # Hlavička s oddělovačem středníkem
 for index, person in enumerate(ipeople, start=1):
     csv_data += f"{index};{person[0]};{person[1]};{person[2]}\n"
