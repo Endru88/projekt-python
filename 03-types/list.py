@@ -326,7 +326,7 @@ ipeople = [person for person in persons if "i" in person[0].lower()]
 
 ipeople.sort(key=lambda x: x[1], reverse=True)
 
-csv_data = "Index;jmeno;Vek;Pohlavi\n"  # Hlavička s oddělovačem středníkem
+csv_data = "Index;jmeno;Vek;Pohlavi\n"
 for index, person in enumerate(ipeople, start=1):
     csv_data += f"{index};{person[0]};{person[1]};{person[2]}\n"
 
