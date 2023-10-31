@@ -105,11 +105,9 @@ mydictionary = {
     ]
 }
 
-# Přidání nového vozu
 new_car = {"make": "Honda", "model": "Civic", "year": 2022, "colors": ["White", "Gray"]}
 mydictionary["cars"].append(new_car)
 
-# Odebrání první knihy
 mydictionary["books"].pop(0)
 
 print("Slovník mydictionary")
