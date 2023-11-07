@@ -158,3 +158,51 @@ funkční kód, tím lepší).
 3. Vytvořte funkci, která vygeneruje náhodná hesla pro počet osob zadaný v parametru tak, aby heslo začínalo
    3 velkými písmeny, pokračovalo 3 malými písmeny, jedním speciálním znakem (-/+*) a končilo 3 náhodnými číslicemi.
 '''
+#1
+from datetime import datetime
+import random
+import string
+def prevod_datumu(datum):
+        datetime_obj = datetime.strptime(datum, '%d. %m. %Y')
+        databazova_podoba = datetime_obj.strftime('%Y-%m-%d')
+        return databazova_podoba
+
+cesky_datum = "12. 12. 2005"
+databazova_datum = prevod_datumu(cesky_datum)
+print(databazova_datum)
+
+#2
+def vytvor_identifikator(souslovi, is_python=True):
+    if is_python:
+        identifikator = souslovi.lower().replace(' ', '_')
+    else:
+        slova = souslovi.split()
+        identifikator = slova[0].lower() + ''.join(word.capitalize() for word in slova[1:])
+
+    return identifikator
+
+#A
+souslovi = "To je proměnná v Pythonu"
+identifikator_python = vytvor_identifikator(souslovi, is_python=True)
+print(identifikator_python)
+
+#B
+souslovi = "To je proměnná v Pythonu"
+identifikator_js = vytvor_identifikator(souslovi, is_python=False)
+print(identifikator_js)
+
+#3
+def generuj_heslo(delka):
+    velka_pismena = ''.join(random.choice(string.ascii_uppercase) for _ in range(3))
+    mala_pismena = ''.join(random.choice(string.ascii_lowercase) for _ in range(3))
+    spec_znak = random.choice("-/+*_")
+    cisla = ''.join(random.choice(string.digits) for _ in range(3))
+
+    heslo = velka_pismena + mala_pismena + spec_znak + cisla
+    return heslo
+
+pocet_osob = 5
+hesla = [generuj_heslo(10) for _ in range(pocet_osob)]
+print(hesla)
+
+
